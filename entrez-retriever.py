@@ -17,15 +17,30 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 '''
 import argparse, requests
-from sys import stderr, exit
 
 parser = argparse.ArgumentParser(
                     prog = 'Entrez Retriever',
                     description = 'Use the Entrez API to perform NCBI queries for sequences.')
 
-parser.add_argument("-db", "--database", help="Database to parse in")
-parser.add_argument("-t", "--term", help="Search term for the query")
-args = parser.parse_args()
+def search_args(parser):
+    parser.add_argument("-db", "--database", help="")
+    parser.add_argument("-t", "--term", help="")
+    parser.add_argument("-w", "--webenv", help="")
+    parser.add_argument("-q", "--querykey", help="")
+    parser.add_argument("-Rs", "--retstart", help="")
+    parser.add_argument("-Rm", "--retmax", help="")
+    parser.add_argument("-Rt", "--rettype", help="")
+    parser.add_argument("-Rmd", "--retmode", help="")
+    parser.add_argument("-s", "--sort", help="")
+    parser.add_argument("-f", "--field", help="")
+    parser.add_argument("-i", "--idtype", help="")
+    parser.add_argument("-dt", "--datetype", help="")
+    parser.add_argument("-rd", "--reldate", help="")
+    parser.add_argument("-md", "--mindate", help="")
+    parser.add_argument("-Md", "--maxdate", help="")
+
+    args = parser.parse_args()
+    return args
 
 def search_query():
     """
