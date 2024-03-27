@@ -42,10 +42,29 @@ def search_args(parser):
     args = parser.parse_args()
     return args
 
-def search_query():
+def search_query(search_args):
     """
-    Performs a search query in the NCBI databases. Receives the database and the search term, along with any additional parameters.
+    Performs a search query in the NCBI databases. Receives the database name and the search term, along with any additional parameters.
     Uses the 'history' feature.
     """
-    search_params = {'db': args.database, 'term': args.term, 'usehistory': 'y'}
+    search_params = {
+        'db': search_args.database,
+        'term': search_args.term,
+        'retstart': search_args.retstart,
+        'retmax': search_args.retmax,
+        'rettype': search_args.rettype,
+        'retmode': search_args.retmode,
+        'sort': search_args.sort,
+        'field': search_args.field,
+        'idtype': search_args.idtype,
+        'datetype': search_args.datetype,
+        'reldate': search_args.reldate,
+        'mindate': search_args.mindate,
+        'maxdate': search_args.maxdate,
+        'query_key': search_args.querykey,
+        'WebEnv': search_args.webenv,
+        'usehistory': 'y'
+        }
+
     server_request = requests.get('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi/', params=search_params)
+    return server_request
