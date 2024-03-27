@@ -28,10 +28,10 @@ def search_args(argparser):
     """
     argparser.add_argument("-db", "--database", help="Database to search in.")
     argparser.add_argument("-t", "--term", help="Entrez text query.")
-    argparser.add_argument("-w", "--webenv", help="Web environment string returned from a previous ESearch, EPost or ELink call. ")
+    argparser.add_argument("-w", "--webenv", help="Web environment string returned from a previous ESearch, EPost or ELink call.")
     argparser.add_argument("-q", "--querykey", help="Integer query key returned by a previous ESearch, EPost or ELink call.")
     argparser.add_argument("-Rs", "--retstart", help="Sequential index of the first UID in the retrieved set to be shown in the XML output.")
-    argparser.add_argument("-Rm", "--retmax", help="Total number of UIDs from the retrieved set to be shown in the XML output .")
+    argparser.add_argument("-Rm", "--retmax", help="Total number of UIDs from the retrieved set to be shown in the XML output.")
     argparser.add_argument("-Rt", "--rettype", help="Retrieval type. There are two allowed values for ESearch: 'uilist' (default), which displays the standard XML output, and 'count', which displays only the <Count> tag.")
     argparser.add_argument("-Rmd", "--retmode", help="Retrieval type. Determines the format of the returned output. The default value is 'xml' for ESearch XML, but 'json' is also supported to return output in JSON format.")
     argparser.add_argument("-s", "--sort", help="Specifies the method used to sort UIDs in the ESearch output.")
