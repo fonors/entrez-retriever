@@ -68,3 +68,18 @@ def search_query(search_args):
 
     server_request = requests.get('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi/', params=search_params)
     return server_request
+
+def seq_fetcher(query_results, og_search_args):
+    query_xml_elemtree = ET.fromstring(query_results.text)
+
+    query_key = query_xml_elemtree.find("QueryKey").text
+    webenv = query_xml_elemtree.find("WebEnv").text
+    fetch_params = {
+        'db': og_search_args.database,
+        'rettype': 'fasta',
+        'query_key': query_key,
+        'WebEnv': webenv
+    }
+
+    server_request = requests.get('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi', params=fetch_params)
+    print(server_request.text)
